@@ -18,13 +18,13 @@ cursor.execute('''
 ''')
 conn.commit()
 
-def create_app(configur):
+def create_app():
     app = Flask(__name__)
 
-    config = configparser.ConfigParser()
-    config.read(configur)
-    file_path = config.get('LogsConfig', 'file_path')
-    format = config.get('LogsConfig', 'format')
+    #config = configparser.ConfigParser()
+    #config.read(configur)
+    #file_path = config.get('LogsConfig', 'file_path')
+    #format = config.get('LogsConfig', 'format')
 
     @app.route('/get_logs', methods=['GET'])
     def get_logs():
@@ -71,7 +71,7 @@ def create_app(configur):
         return jsonify(formatted_data)
     return app
 
-app = create_app('config.ini')
+app = create_app()
 
 if __name__ == '__main__':
     
